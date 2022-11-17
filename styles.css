@@ -1,0 +1,122 @@
+
+/***!Parallax
+    - The Technique can be read here:
+    - Other useful resource on the topic: https://stackoverflow.com/questions/60417434/how-to-make-parallax-effect-in-image-tag-without-background-image
+***/
+*{
+	box-sizing: border-box; /* I recommend using this with parallax, otherwise - AFTER you scrolled down - the image will have some weird white space that becomes visible for the user --> you definitely DON'T want this! xD */
+	margin: 0;
+	padding: 0;
+}
+
+img {
+    height: auto;
+    min-width: 100%;
+	border-style: none;
+	display: block;
+}
+
+/*** --- Von mir eingefügt, beim Versuch, die SBB-Storytelling Technik zu kopieren ... ***/
+
+:root{
+	--padding-top: 0vh;
+    --app-header-height: 1px;
+	--app-height: 100vh;
+	--t-scrolly-sticky-bg: rgb(34, 33, 29);
+	--padding-bottom: 0vh;
+}
+
+.main-parallax-wrapper {
+    position: relative;
+    /* z-index: auto;
+    overflow: auto; */
+}
+
+.storytelling-img{
+	width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.alternative-img-stick{
+	position: sticky;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity .6s ease-in-out;
+    top: var(--app-header-height);
+    height: calc(var(--app-height) - var(--app-header-height));
+    background-color: var(--t-scrolly-sticky-bg)
+}
+
+.parallax-effect{
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	width: 100%;
+	margin: calc(50vh - var(--app-header-height) / 2) auto 0; /* <- DAS ist der Parallax-Effekt (und das untere Styling). */
+	padding: var(--padding-top) 12px calc(61vh - var(--app-header-height) / 2); /* <- DAS ist der Parallax-Effekt (und das obere Styling). */
+}
+.outer-text-wrapper-storytelling{
+	margin-top: 25px;
+	/* position: relative; */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    padding-bottom: var(--padding-bottom);
+    transition: opacity .6s ease-in-out;
+}
+.story-telling-content, .story-telling-content--hero{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    padding: 8px 12px;
+    background-color: rgba(0, 0, 0, .8);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    border-radius: 2px;
+}
+.story-telling-content--hero{
+    top: 25%;
+}
+.story-telling-content{
+    top: 50%;
+}
+
+/* -- Versuch, mit position "absolute" die Bilder aufeinander zu stapeln... -- */
+
+/* -- Grid, welches die einzelnen Parallax-Elemente aufeinander staut --> hat nicht funktioniert... xD -- */
+/* .grid-stapel {
+  display: grid !important;
+  grid-template: 1fr / 1fr !important;
+  place-items: center !important;
+}
+.grid-stapel > * {
+  grid-column: 1 / 1 !important;
+  grid-row: 1 / 1 !important;
+  width: 100%;
+}
+.grid-stapel .grid-stapel--below {
+  z-index: 1 !important;
+}
+.grid-stapel .grid-stapel--top {
+  z-index: 2 !important;
+} */
+
+/* -- Dynamische CSS-Klassen (aktiviert sich via JS) -- */
+.invisible-parallax {
+    display: none;
+}
+.invisible-parallax.triggered-visible{
+    display: block;
+}
+
+.test{
+    display: flex;
+}
+
+.test > * {
+    width: 100%;
+}
