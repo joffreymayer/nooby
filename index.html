@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parallax Scroll-Effect with img-Tag</title>
+    <title>Parallax Scroll-Effect + Übergangs-Sektionen</title>
     <link rel="stylesheet" href="styles.css">
     <!-- <script defer src="/storytelling.js"></script> -->
 </head>
@@ -19,16 +19,71 @@
 
     <main>
 
+        <div class="storytelling-new-chapter-wrapper">
+
+            <div class="flex-storytelling-headlines flex-desktop-column">
+                <!-- <div class="invisible-story-for-desktop"><span>1</span></div> -->
+                <div class="flex-special-storytelling">
+                    <h2 class="h2-storytelling-headlines">Wie maximiere ich meine Anlage?</h2>
+                    <div class="invisible-story-for-desktop"><span>1</span></div>
+                </div>
+                <div><h3 class="h3-storytelling-headlines"><em>1) Das Problem</em></h3></div>
+            </div>
+            <!-- Ende "row": 1-->
+
+            <div class="grid-storytelling-contents flex-desktop-row">
+                <div class="storytelling-problem-content">
+                    <h3 class="h3-storytelling-problem-content">More Sound please!</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 🧐
+                    </p>
+                </div>
+                <div class="storytelling-problem-img">
+                    <img src="bw-803-d3-von-vorne-kleiner-high-end-standlautsprecher-bei-audiophil-dreams-in-8713-uerikon-schweiz.JPG"
+                  class="storytelling-img" />
+                </div>
+            </div>
+            <!-- Ende "row": 2-->
+
+        </div>
+        <!-- Ende "storytelling-new-chapter-wrapper" -->
+
         <!-- <div class="grid-stapel"> -->
             <div class="main-parallax-wrapper parallax-a .grid-stapel--below">
                 <div class="alternative-img-stick">
-                  <img src="bw-803-d3-von-vorne-kleiner-high-end-standlautsprecher-bei-audiophil-dreams-in-8713-uerikon-schweiz.JPG"
-                  class="storytelling-img" />
+                    <picture style="position: sticky; width: 100%; transition: opacity .6s ease-in-out; top: var(--app-header-height); height: calc(var(--app-height) - var(--app-header-height)); background-color: var(--t-scrolly-sticky-bg);">
+                        <!-- On a screen <= 650px our image is 100vw... -->
+                        <!-- <source
+                        media="(max-width: 650px)" 
+                        sizes="100vw" 
+                        srcset="/bilder/atoll-electronique/in-300/atoll-in-300-850-375.jpg 375w,
+                        /bilder/atoll-electronique/in-300/atoll-in-300-850-600.jpg 600w,
+                        /bilder/atoll-electronique/in-300/atoll-in-300-850-786.jpg 786w" 
+                        /> -->
+                
+                        <source
+                        media="(max-width: 786px)" 
+                        sizes="100vw" 
+                        srcset="/focal-grande-utopia-and-piano-originale-state-of-the-art-standlautsprecher-bei-audiophil-dreams-8713-uerikon-schweiz.jpg 786w" 
+                        />
+                  
+                        <source
+                        sizes="100vw" 
+                        srcset="/bw-803-d3-von-vorne-kleiner-high-end-standlautsprecher-bei-audiophil-dreams-in-8713-uerikon-schweiz.JPG 1500w" />
+                    
+                        <img src="/bw-803-d3-von-vorne-kleiner-high-end-standlautsprecher-bei-audiophil-dreams-in-8713-uerikon-schweiz.JPG"
+                            alt="Atoll IN 300, zahlbarer Vollverstärker im ShowRoom von Audiophil-dreams, 8713-Uerikon, Schweiz"
+                            class="storytelling-img" width="1500" height="1000" />
+                      </picture>
+                      <!-- For styling of Elements, that should STAY FIXED on the "Folie", use these types of elements! xD -->
+                      <div style="position: absolute; color: white; left: 50%; transform: translate(-50%, -50%); top: 6%;">Hoi du Noob! 😂</div> 
                 </div>
                 <div class="parallax-wrapper">
                     <div class="parallax-effect">
                         <div class="outer-text-wrapper-storytelling">
-                            <div class="story-telling-target story-telling-content--hero">🔥 This is the foreground 🔥</div>
+                            <div class="story-telling-target story-telling-content" style="top: 25%;">🔥 This is the foreground 🔥</div>
+                            <div class="story-telling-target story-telling-content" style="top: 50%;">🔥 This is the noob 🔥</div>
+                            <div class="story-telling-target story-telling-content" style="top: 75%;">🔥 This is the foreground 🔥</div>
                         </div>
                     </div>
                 </div>
@@ -41,7 +96,7 @@
                 <div class="parallax-wrapper">
                     <div class="parallax-effect">
                         <div class="outer-text-wrapper-storytelling">
-                            <div class="story-telling-target story-telling-content">🔥 This is the foreground 🔥</div>
+                            <div class="story-telling-target story-telling-content" style="top: 50%;">🔥 This is the foreground 🔥</div>
                         </div>
                     </div>
                 </div>
@@ -54,7 +109,7 @@
                 <div class="parallax-wrapper">
                     <div class="parallax-effect">
                         <div class="outer-text-wrapper-storytelling">
-                            <div class="story-telling-target story-telling-content">🔥 This is the foreground 🔥</div>
+                            <div class="story-telling-target story-telling-content" style="top: 50%;">🔥 This is the foreground 🔥</div>
                         </div>
                     </div>
                 </div>

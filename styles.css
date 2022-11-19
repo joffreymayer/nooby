@@ -11,9 +11,6 @@
 
 img {
     height: auto;
-    min-width: 100%;
-	border-style: none;
-	display: block;
 }
 
 /*** --- Von mir eingefügt, beim Versuch, die SBB-Storytelling Technik zu kopieren ... ***/
@@ -24,6 +21,12 @@ img {
 	--app-height: 100vh;
 	--t-scrolly-sticky-bg: rgb(34, 33, 29);
 	--padding-bottom: 0vh;
+    --fixed-width: 512px; /* Goal hier: I want a fixed AR of 1:1! --> Dient der Übergangs-Sektion... */
+    --fixed-height: 512px; /* Goal hier: I want a fixed AR of 1:1! --> Dient der Übergangs-Sektion... */
+    --fixed-width-tablet: 34.9vw;
+    --fixed-height-tablet: 34.9vw;
+    --fixed-width-phone: 250px;
+    --fixed-height-phone: 250px;
 }
 
 .main-parallax-wrapper {
@@ -36,6 +39,9 @@ img {
 	width: 100%;
     height: 100%;
     object-fit: cover;
+    min-width: 100%;
+	border-style: none;
+	display: block;
 }
 .alternative-img-stick{
 	position: sticky;
@@ -78,12 +84,139 @@ img {
     backdrop-filter: blur(4px);
     border-radius: 2px;
 }
-.story-telling-content--hero{
-    top: 25%;
+
+/** -- Start: Übergangs-Sektion Storytelling -- **/
+
+/* -- Layout -- */
+.storytelling-new-chapter-wrapper{/* This is our main-wrapper that wraps everything... */
+    padding: 80px 90px;
 }
-.story-telling-content{
-    top: 50%;
+.storytelling-new-chapter-wrapper{
+    background-color: #EAEADA;
+    min-height: 100vh;
 }
+.flex-desktop-column{
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid orangered;
+}
+.flex-desktop-row{
+    display: grid;
+    grid-template-columns: 50% 1fr;
+    grid-gap: 40px;
+    /* color: #f8f8f2; */
+    /* display: flex;
+    flex-direction: row;
+    justify-content: space-evenly; */
+    /* align-items: center; */
+}
+.flex-desktop-row > *{ /* This targets: All direct children --> hier: 2 <div>'s, welche einen Zwischen-Abstand benötigen... */
+    margin: 45px;
+}
+.flex-desktop-row div:nth-child(1) {
+    padding: 0px 25px;
+}
+.invisible-story-for-desktop{
+    display: none;
+}
+.storytelling-problem-img{ /*The image's Container will get an Aspect-Ratio of 1:1... */
+    height: var(--fixed-height); 
+    width: var(--fixed-width);
+}
+.storytelling-problem-img img{ /*The image itself should behave like a BG-image... */
+    object-fit: cover;
+}
+@media(max-width: 1220px){ /* Breakpoints... */
+    .storytelling-problem-img{ /*The image's Container will get an Aspect-Ratio of 1:1... */
+        height: var(--fixed-height-tablet); 
+        width: var(--fixed-width-tablet);
+    }
+}
+@media(max-width: 768px){ /* Breakpoints... */
+    .storytelling-new-chapter-wrapper{
+        padding: 20px 5px;
+    }
+    .flex-special-storytelling{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .flex-special-storytelling span{
+        color: #D3A468;
+        font-size: clamp(20vh, 30vh, 60vh);
+    }
+    .flex-desktop-row > *{ /* This targets: All direct children --> hier: 2 <div>'s, welche einen Zwischen-Abstand benötigen... */
+        margin: 0px;
+    }
+    /* .flex-desktop-row:nth-child(2){
+        margin-top: 5%;
+        /* width: 50%; }*/
+    /* .storytelling-problem-content{
+        width: 50%;
+    } */
+    .flex-desktop-column{
+        flex-direction: row-reverse;
+        border-bottom: none;
+    }
+    .flex-desktop-row{
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 25px;
+    }
+    .storytelling-problem-img{
+        justify-self: center;
+    }
+    .invisible-story-for-desktop{
+        display: block;
+    }
+    /* .h2-storytelling-headlines::after{
+        position: absolute;
+        top: -10px;
+        content: "1";
+        padding-left: 6vw;
+        padding-bottom: 4vh;
+        color: #D3A468;
+        font-size: clamp(18vh, 28vh, 38vh);
+    } */
+    .h2-storytelling-headlines{
+        padding: 0 25px;
+        width: 75%;
+    }
+    .h3-storytelling-headlines{
+        display: none;
+    }
+    .storytelling-problem-img{ /*The image's Container will get an Aspect-Ratio of 1:1... */
+        height: var(--fixed-height-phone); 
+        width: var(--fixed-width-phone);
+    }
+}
+
+/* -- Font-Size & Color -- */
+.h2-storytelling-headlines{ /* Haupttitel der Sektion */
+    font-size: clamp(20px, 10vw, 10vh);
+    /* text-align: center; */
+    margin-block-start: 0;
+    margin-block-end: 8px;
+    padding-bottom: 1.5%;
+}
+.h3-storytelling-headlines{
+    color: #0000007c;
+}
+.h3-storytelling-problem-content{ /* Artikel-Titel */
+    font-size: 5vh;
+    color: red;
+    /* text-align: center; */
+}
+.storytelling-problem-content p{ /*Styling des Text-Paragraphens..*/
+    margin-top: 5%;
+}
+
+
+
+/* .flex-storytelling-headlines{
+
+} */
 
 /* -- Versuch, mit position "absolute" die Bilder aufeinander zu stapeln... -- */
 
@@ -106,7 +239,7 @@ img {
 } */
 
 /* -- Dynamische CSS-Klassen (aktiviert sich via JS) -- */
-.invisible-parallax {
+/* .invisible-parallax {
     display: none;
 }
 .invisible-parallax.triggered-visible{
@@ -119,4 +252,4 @@ img {
 
 .test > * {
     width: 100%;
-}
+} */
